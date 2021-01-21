@@ -1,0 +1,10 @@
+export LANG=en_US.UTF-8
+alias ll='ls -lGh'
+alias gco='git checkout'
+alias gp='git pull'
+alias gettoken='oathtool --base32 --totp <token>' # Oauth2 token
+alias token='gettoken | pbcopy'
+alias repos='cd /Users/marcodieguez/go/src/github.com/'
+alias gittkn='echo <token> | pbcopy' # Github token
+alias ports='lsof -i | grep LISTEN'
+alias tf='terraform'
