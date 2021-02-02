@@ -1,0 +1,6 @@
+[user]
+	email = 42622776+mporracindie@users.noreply.github.com
+	name = mporracindie
+[filesystem "Oracle Corporation|15.0.1|/dev/disk1s2"]
+	timestampResolution = 10000 nanoseconds
+	minRacyThreshold = 0 nanoseconds
