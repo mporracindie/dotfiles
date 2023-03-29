@@ -30,7 +30,7 @@ alias tsad="ts all down"
 
 #BigQuery
 bqschema() {
-    bq show --format=json "$1"  | jq '.schema.fields'     
+    bq show --project_id="$(cut -d '.' -f1 <<< "$1")" --format=json "$(cut -d '.' -f2-3 <<< "$1")"  | jq '.schema.fields'     
 }
 
 export PATH="$HOME/.poetry/bin:$PATH"
