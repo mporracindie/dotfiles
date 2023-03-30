@@ -33,6 +33,31 @@ bqschema() {
     bq show --project_id="$(cut -d '.' -f1 <<< "$1")" --format=json "$(cut -d '.' -f2-3 <<< "$1")"  | jq '.schema.fields'     
 }
 
+#Python venv
+venv() {
+    [[ "$VIRTUAL_ENV" == "" ]]; INVENV=$?
+    if [[ $INVENV == 1 ]]; then
+        echo "Deactivating virtualenv"
+        deactivate
+        return 0
+    fi
+    FILE=.venv/bin/activate
+    if [[ -f $FILE ]]; then
+        echo "Activating virtualenv"
+        source $FILE
+    else 
+        REQ="requirements.txt"
+        if [[ -f $REQ ]]; then
+            python -m venv .venv
+            source .venv/bin/activate
+            pip install -r requirements.txt
+            echo "Activating virtualenv"
+        else
+            echo "No requirements.txt file found"
+        fi
+    fi 
+}
+
 export PATH="$HOME/.poetry/bin:$PATH"
 
 # add env_on_chdir to chpwd_functions
